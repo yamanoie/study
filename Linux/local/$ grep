@@ -1,0 +1,44 @@
+$ grep
+
+文字列を検索して表示
+
+ 例) $ history | grep puma
+
+
+   55  kill $(cat tmp/pids/puma.pid)
+   57  kill $(cat tmp/pids/puma.pid)
+   60  touch puma.sh
+   65  vi puma.sh
+   66  cat puma.sh
+   68  vi puma.sh
+   69  cat puma.sh
+   94  ls tmp/pids/puma.pid
+   95  kill $(cat tmp/pids/puma.pid)
+  100  kill $(cat tmp/pids/puma.pid)
+  104  kill $(cat tmp/pids/puma.pid)
+  141  kill $(cat tmp/pids/puma.pid)
+  147  kill $(cat tmp/pids/puma.pid)
+  150  kill $(cat tmp/pids/puma.pid)
+  171  kill $(cat tmp/pids/puma.pid)
+  173  kill $(cat tmp/pids/puma.pid)
+  184  kill $(cat tmp/pids/puma.pid)
+  205  ps aux | grep puma
+  206  kill $(cat tmp/pids/puma.pid)
+  207  ps aux | grep puma
+  212  kill $(cat tmp/pids/puma.pid)
+  213  ps aux | grep puma
+  218  kill $(cat tmp/pids/puma.pid)
+  224  ps aux | grep puma
+  274  kill $(cat tmp/pids/puma.pid)
+  337  kill $(cat tmp/pids/puma.pid)
+  346  ps aux |grep puma
+  348  tail -1000 log/puma-error.log
+  353  ps aux |grep puma
+  355  tail -1000 log/puma-error.log
+  356  tail -1000 log/puma.log
+  357  tail -1000 log/puma-error.log
+  371  cat puma.sock
+  374  cat puma.state
+  376  cat puma.state
+  390  tail -f puma.log
+  448  history | grep puma
