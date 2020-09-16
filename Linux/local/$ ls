@@ -1,0 +1,104 @@
+$ ls
+
+
+$ ls -l
+
+ファイルの詳細を表示する
+
+コマンドを打つと以下のようになる
+
+-rw-rw-r--  1 ec2-user ec2-user  1152  9月 12 05:40 Capfile
+-rw-rw-r--  1 ec2-user ec2-user  2811  9月 12 05:40 Gemfile
+-rw-rw-r--  1 ec2-user ec2-user 10964  9月 12 05:40 Gemfile.lock
+-rw-rw-r--  1 ec2-user ec2-user  1849  8月 27 11:34 README.md
+-rw-rw-r--  1 ec2-user ec2-user   227  8月 27 11:34 Rakefile
+drwxrwxr-x 11 ec2-user ec2-user  4096  8月 27 11:34 app
+drwxrwxr-x  2 ec2-user ec2-user  4096  9月  9 11:26 bin
+drwxrwxr-x  6 ec2-user ec2-user  4096  9月 12 05:40 config
+-rw-rw-r--  1 ec2-user ec2-user   130  8月 27 11:34 config.ru
+lrwxrwxrwx  1 ec2-user ec2-user    48  9月 15 09:56 current -> /home/ec2-user/portfolio/releases/20200915095613
+drwxrwxr-x  3 ec2-user ec2-user  4096  9月 12 05:40 db
+-rw-rw-r--  1 ec2-user ec2-user   193  9月 10 12:14 ec2-user@
+drwxrwxr-x  4 ec2-user ec2-user  4096  8月 27 11:34 lib
+drwxrwxr-x  2 ec2-user ec2-user  4096  9月 10 12:59 log
+-rw-rw-r--  1 ec2-user ec2-user    67  8月 27 11:34 package.json
+drwxrwxr-x  3 ec2-user ec2-user  4096  9月  9 11:26 public
+drwxrwxr-x  7 ec2-user ec2-user  4096  9月 15 09:56 releases
+drwxrwxr-x  7 ec2-user ec2-user  4096  9月 15 09:56 repo
+-rw-rw-r--  1 ec2-user ec2-user  1908  9月 15 09:56 revisions.log
+drwxrwxr-x  7 ec2-user ec2-user  4096  9月 13 06:30 shared
+drwxrwxr-x  4 ec2-user ec2-user  4096  9月  9 11:26 spec
+drwxrwxr-x  2 ec2-user ec2-user  4096  8月 27 11:34 storage
+drwxrwxr-x  9 ec2-user ec2-user  4096  9月  9 11:26 test
+drwxrwxr-x  6 ec2-user ec2-user  4096  8月 27 11:55 tmp
+drwxrwxr-x  4 ec2-user ec2-user  4096  8月 27 11:37 vendor
+
+
+＊各項目の説明
+
+
+-rw-rw-r--  1 ec2-user ec2-user  1152  9月 12 05:40 Capfile
+
+
+・-rw-r--r-- = ファイルの種類 + パーミッション
+	ファイルの種類として通常使われるのは以下の3つ。
+		- : ファイル
+		d : ディレクトリ
+		l : シンボリックリンク(実体は別の所にあるファイル　上の場合current)
+	パーミッション（ファイルのアクセス権などを決定する）
+		r : 読み出し
+		w :　書き出し
+		x : 実行許可
+		- : 該当許可なし
+		３組になっている
+		wr-(user)r--(group)r--(other)
+		（例）rwxr-x---
+		所有者は読み書き実行が全て許可（rwx）、グループは読み出しと実行が許可（r-x）、それ以外の人は全ての操作が一切不可（---）という意味
+・1 = ハードリンクの数（ファイルの“本名”）
+・ec2-user = 所有者
+・ec2-user =所有グループ
+・1152 = ファイルサイズ
+・9月 12 05:40 = タイムスタンプ
+・Capfile　= ファイル名
+
+
+
+
+$ ls -la
+隠しファイルも含めて全て詳細で表示する
+
+
+
+drwxr-xr-x. 1 vagrant vagrant  1056 Sep 16 02:16 .
+drwxr-xr-x. 1 vagrant vagrant   768 Sep 16 02:16 ..
+-rw-r--r--. 1 vagrant vagrant  6148 Aug 31 06:06 .DS_Store
+drwxr-xr-x. 1 vagrant vagrant    96 Sep  2 09:46 .bundle
+-rw-r--r--. 1 vagrant vagrant   456 Sep  5 12:30 .byebug_history
+-rw-r--r--. 1 vagrant vagrant   339 Sep 13 06:30 .env
+drwxr-xr-x. 1 vagrant vagrant   448 Sep 15 09:56 .git
+-rw-r--r--. 1 vagrant vagrant   702 Sep  2 10:38 .gitignore
+-rw-r--r--. 1 vagrant vagrant    22 Sep  9 05:36 .rspec
+-rw-r--r--. 1 vagrant vagrant    32 Sep  9 00:50 .rubocop.yml
+-rw-r--r--. 1 vagrant vagrant  4945 Sep  9 05:08 .rubocop_todo.yml
+-rw-r--r--. 1 vagrant vagrant     5 Aug 20 00:31 .ruby-version
+-rw-r--r--. 1 vagrant vagrant  1152 Sep 10 22:06 Capfile
+-rw-r--r--. 1 vagrant vagrant  2498 Sep 16 02:19 EC2.command
+-rw-r--r--. 1 vagrant vagrant  2811 Sep 10 22:04 Gemfile
+-rw-r--r--. 1 vagrant vagrant 10964 Sep 10 22:05 Gemfile.lock
+-rw-r--r--. 1 vagrant vagrant  2407 Sep 13 03:25 README.md
+-rw-r--r--. 1 vagrant vagrant   227 Sep  2 10:38 Rakefile
+drwxr-xr-x. 1 vagrant vagrant   384 Sep 15 09:54 app
+drwxr-xr-x. 1 vagrant vagrant   288 Sep  9 05:08 bin
+drwxr-xr-x. 1 vagrant vagrant   608 Sep 13 13:47 config
+-rw-r--r--. 1 vagrant vagrant   130 Sep  2 10:38 config.ru
+drwxr-xr-x. 1 vagrant vagrant   224 Sep 15 03:05 db
+-rw-r--r--. 1 vagrant vagrant   193 Sep 10 11:10 ec2-user@
+drwxr-xr-x. 1 vagrant vagrant   160 Sep 10 22:05 lib
+drwxr-xr-x. 1 vagrant vagrant   288 Sep 16 01:40 log
+-rw-r--r--. 1 vagrant vagrant    67 Sep  2 10:38 package.json
+drwxr-xr-x. 1 vagrant vagrant   352 Sep  8 08:28 public
+drwxr-xr-x. 1 vagrant vagrant   224 Sep  9 06:55 spec
+drwxr-xr-x. 1 vagrant vagrant    96 Aug 20 00:31 storage
+drwxr-xr-x. 1 vagrant vagrant   352 Sep  9 03:22 test
+drwxr-xr-x. 1 vagrant vagrant   352 Sep  2 10:38 tmp
+drwxr-xr-x. 1 vagrant vagrant   128 Sep  9 07:21 vendor
