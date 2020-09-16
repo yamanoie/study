@@ -1,0 +1,25 @@
+$ rails s -e production
+
+
+-eの意味
+
+基本的に rails server コマンドでサーバを起動するのは開発時だと思うので、標準では development で起動する。production や test で実行する場合にはそれらを指定する必要がある。
+
+$ rails server --environment=production　が元の形
+$ rails s -e production 省略形
+
+
+
+
+
+
+
+
+開発で使う　$ rails s -b 0.0.0.0について
+
+-bの意味
+
+特に何も指定せずに rails server コマンドでサーバを立ち上げた場合、localhost からしかアクセスできない。他のコンピュータからもアクセスする場合には binding オプションを使用する。
+
+$ rails server --binding=0.0.0.0
+$ rails s -b 0.0.0.0 省略
