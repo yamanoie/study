@@ -1,3 +1,87 @@
 $git status
 
 ワーキングツリーとインデックスの現在の状況を確認
+
+
+
+YukinoMacBook-Pro:study yuki$ git status *git add をまだしていない状態
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    AWS/.DS_Store
+	modified:   Linux/.DS_Store
+	deleted:    Linux/EC2/$ ps aux
+	deleted:    Linux/EC2/$ rails s -e production
+	deleted:    Linux/local/$ cat
+	deleted:    Linux/local/$ grep
+	deleted:    Linux/local/$ ls
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git/
+	Linux/$ cat
+	Linux/$ grep
+	Linux/$ ls
+	Linux/$ mv
+	Linux/$ ps aux
+	Linux/$ rails s
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+*Untracked files（未対応のファイル）
+
+
+
+
+YukinoMacBook-Pro:study yuki$ git add .
+YukinoMacBook-Pro:study yuki$ git status * git addをした後
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    AWS/.DS_Store -> .DS_Store
+	new file:   Git/$git diff
+	new file:   Git/$git log
+	new file:   Git/$git reset
+	new file:   Git/$git status
+	renamed:    Linux/local/$ cat -> Linux/$ cat
+	renamed:    Linux/local/$ grep -> Linux/$ grep
+	renamed:    Linux/local/$ ls -> Linux/$ ls
+	new file:   Linux/$ mv
+	renamed:    Linux/EC2/$ ps aux -> Linux/$ ps aux
+	renamed:    Linux/EC2/$ rails s -e production -> Linux/$ rails s 
+	modified:   Linux/.DS_Store
+
+
+
+
+
+
+$ git commit -m "git"
+[master fdee916] git
+ 12 files changed, 52 insertions(+)
+ rename AWS/.DS_Store => .DS_Store (77%)
+ create mode 100644 Git/$git diff
+ create mode 100644 Git/$git log
+ create mode 100644 Git/$git reset
+ create mode 100644 Git/$git status
+ rename Linux/{local => }/$ cat (100%)
+ rename Linux/{local => }/$ grep (100%)
+ rename Linux/{local => }/$ ls (100%)
+ create mode 100644 Linux/$ mv
+ rename Linux/{EC2 => }/$ ps aux (100%)
+ rename Linux/{EC2/$ rails s -e production => $ rails s } (100%)
+
+
+YukinoMacBook-Pro:study yuki$ git status　* git commitした後
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
