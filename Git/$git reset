@@ -96,3 +96,18 @@ Untracked files:　　← unchecked つまりaddする前に戻った
 	Git/$ git push
 
 no changes added to commit (use "git add" and/or "git commit -a")
+
+
+
+
+
+3 --hard
+
+
+「ステージングエリアにも作業ディレクトリにも残らなくていいから、コミットをまるごと消したい」というときに使える
+
+
+
+
+
+GIT RESET HARD!!!
