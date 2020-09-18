@@ -1,1 +1,27 @@
 $ git clone
+
+リポジトリ(ファイルやディレクトリの状態)をコピーする
+
+$git clone [クローンしたいリポジトリ]
+
+$git remote -v リモートリポジトリの場所を確認する
+
+
+
+
+git remote -v
+origin	https://github.com/yamanoie/study.git (fetch)
+origin	https://github.com/yamanoie/study.git (push)
+
+
+YukinoMacBook-Pro:study yuki$ git clone https://github.com/yamanoie/study.git
+Cloning into 'study'...
+remote: Enumerating objects: 71, done.
+remote: Counting objects: 100% (71/71), done.
+remote: Compressing objects: 100% (54/54), done.
+remote: Total 71 (delta 18), reused 64 (delta 11), pack-reused 0
+Unpacking objects: 100% (71/71), 16.19 KiB | 425.00 KiB/s, done.
+
+
+YukinoMacBook-Pro:study yuki$ ls
+Git		Linux		Ruby Glossary	study (←studyディレクトリがコピーされた)
