@@ -1,1 +1,98 @@
 $git reset
+
+特定の時点までファイルを巻き戻す
+
+
+*HEADについて
+自分が今いる位置のこと。たいていはブランチの先頭のコミットを指していることが多い。
+
+
+3つのオプション
+
+
+
+
+
+
+1   --soft
+
+HEADだけを動かす。
+コミットだけが消える
+コミットし直したい時など。
+
+
+
+git reset --soft HEAD^　(*HEAD^  一つ前のコミットを消す)
+
+
+
+git reflog
+26d161d (HEAD -> master, origin/master) HEAD@{0}: reset: moving to HEAD^
+d3ca790 HEAD@{1}: commit: git reset
+26d161d (HEAD -> master, origin/master) HEAD@{2}: commit: git revert again
+50dab58 HEAD@{3}: revert: Revert "git revert"
+7fcf1ce HEAD@{4}: commit: git revert
+fdee916 HEAD@{5}: commit: git
+a24784b HEAD@{6}: commit: mv
+6b9d2e4 HEAD@{7}: commit: grep
+e022e8e HEAD@{8}: commit: ls command
+d8ce25e HEAD@{9}: commit: rails s
+37ad9e7 HEAD@{10}: commit (initial): First commit
+
+
+
+
+
+
+
+
+
+
+
+
+2 --mixed
+
+
+ステージしたものを取り消したい
+いくつかgit addでステージしたけど、やっぱやめた」というときに使える
+
+
+
+$git reset --mixed HEAD
+
+＊--mixedは省略できる
+
+
+
+
+YukinoMacBook-Pro:study yuki$ git add .
+YukinoMacBook-Pro:study yuki$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Git/$ git clone
+	new file:   Git/$ git push
+	modified:   Git/$git reset
+
+YukinoMacBook-Pro:study yuki$ git reset HEAD
+Unstaged changes after reset:
+
+M	Git/$git reset     ←addしたものを取り消す
+
+YukinoMacBook-Pro:study yuki$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Git/$git reset
+
+Untracked files:　　← unchecked つまりaddする前に戻った
+  (use "git add <file>..." to include in what will be committed)
+	Git/$ git clone
+	Git/$ git push
+
+no changes added to commit (use "git add" and/or "git commit -a")
