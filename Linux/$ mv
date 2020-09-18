@@ -1,0 +1,43 @@
+$ mv
+
+1 ファイルやディレクトリの移動
+
+mv [オプション] 移動元 移動先
+
+
+
+$ ls
+$ cat		$ grep		$ ls		$ mv		$ ps aux	$ rails s 	test *これを移動する
+$ cd ..
+$ mv Linux/test AWS *LinuxフォルダからAWSフォルダへ移動
+$ ls
+AWS		Linux		Ruby Glossary
+$ cd Linux/
+$ ls
+$ cat		$ grep		$ ls		$ mv		$ ps aux	$ rails s
+$ cd ..
+$ cd AWS/
+$ ls
+test　*移動された
+
+
+
+
+2 リネーム
+
+
+$ ls
+$ cat		$ grep		$ ls		$ mv		$ ps aux	$ rails s 	test
+$ mv test test.1
+$ ls
+$ cat		$ grep		$ ls		$ mv		$ ps aux	$ rails s 	test.1
+
+
+
+
+
+＊オプション
+
+-i
+ファイルを上書きする前に確認
+
