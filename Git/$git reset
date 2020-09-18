@@ -109,7 +109,36 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 
 
+$git reflogで消しすぎたものはもとに戻せる
 
-GIT RESET HARD!!!
 
-a
+
+
+
+git reflog
+
+01eb0fd (HEAD -> master, origin/master) HEAD@{0}: reset: moving to HEAD@{1}
+01eb0fd (HEAD -> master, origin/master) HEAD@{1}: reset: moving to HEAD@{0}
+01eb0fd (HEAD -> master, origin/master) HEAD@{2}: reset: moving to HEAD^
+db1db67 HEAD@{3}: reset: moving to HEAD^
+f6ee1f8 HEAD@{4}: commit: reset hard
+db1db67 HEAD@{5}: reset: moving to HEAD
+db1db67 HEAD@{6}: commit: git reset hard
+01eb0fd (HEAD -> master, origin/master) HEAD@{7}: commit: git reset soft
+26d161d HEAD@{8}: reset: moving to HEAD
+26d161d HEAD@{9}: reset: moving to HEAD^
+d3ca790 HEAD@{10}: commit: git reset
+26d161d HEAD@{11}: commit: git revert again
+50dab58 HEAD@{12}: revert: Revert "git revert"
+7fcf1ce HEAD@{13}: commit: git revert
+fdee916 HEAD@{14}: commit: git
+a24784b HEAD@{15}: commit: mv
+6b9d2e4 HEAD@{16}: commit: grep
+e022e8e HEAD@{17}: commit: ls command
+d8ce25e HEAD@{18}: commit: rails s
+37ad9e7 HEAD@{19}: commit (initial): First commit
+
+
+
+YukinoMacBook-Pro:study yuki$ git reset --hard HEAD@{4}
+HEAD is now at f6ee1f8 reset hard

@@ -1,4 +1,24 @@
 $git diff
 
-ワークツリーとインデックスの差分を表示。
+ワークツリーとインデックスの差分を表示。"どのような変更をしたか"といった差分を確認
 差分がなければ何も表示されない。
+
+
+
+
+YukinoMacBook-Pro:study yuki$ git diff
+diff --git a/Git/$git diff b/Git/$git diff
+index 10ab9ce..80f1760 100644
+--- a/Git/$git diff
++++ b/Git/$git diff
+@@ -1,4 +1,4 @@
+ $git diff (*ファイル名
+
+-ワークツリーとインデックスの差分を表示。
++ワークツリーとインデックスの差分を表示。"どのような変更をしたか"といった差分を確認
+ 差分がなければ何も表示されない。
+\ No newline at end of file
+diff --git a/Git/$git log b/Git/$git log
+index 022a68b..c4442ea 100644
+--- a/Git/$git log
++++ b/Git/$git log
