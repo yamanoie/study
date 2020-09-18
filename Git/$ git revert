@@ -1,0 +1,57 @@
+$ git revert
+
+リバート（revert）は英語でいうと、「元に戻す」という意味
+プッシュ済みのコミットを打ち消したいときに使用。
+指定したコミットと逆の内容をコミットする
+
+取り消したいコミットを打ち消すようなコミットを新しく作成する」という処理によって、既存のコミットを取り消す。
+新しくコミットを追加しているだけなので、既存コミットの履歴が消えるわけではない(コミットログをみると残っている)。
+
+
+*git log でコミットIDを確認（全てコピーしなくても最初の数桁だけで特定してくれる）
+
+
+リバートすると、以下のようにコミットメッセージ編集画面になる。
+
+
+
+Revert "git revert"
+
+This reverts commit 7fcf1ce8f4d97bb9f295f5b4dbe312c41ca205f9.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#       deleted:    Git/$ git revert
+#       modified:   Git/$git diff
+#       modified:   Git/$git log
+#       modified:   Git/$git status
+
+
+
+$git log
+commit 50dab58176786cd428952ce9ddb56656f205975d (HEAD -> master)
+Author: YUKI.Y <yamanoieyamanoie@yahoo.co.jp>
+Date:   Fri Sep 18 10:32:15 2020 +0900
+
+    Revert "git revert"
+
+    This reverts commit 7fcf1ce8f4d97bb9f295f5b4dbe312c41ca205f9.
+
+
+↑が追加された
+
+
+commit 7fcf1ce8f4d97bb9f295f5b4dbe312c41ca205f9 (origin/master)
+Author: YUKI.Y <yamanoieyamanoie@yahoo.co.jp>
+Date:   Fri Sep 18 10:28:27 2020 +0900
+
+    git revert
+
+
+
+$git push　でリモートに反映
