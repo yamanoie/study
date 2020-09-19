@@ -1,0 +1,194 @@
+HTTPメソッド
+
+クライアントが行いたい処理をサーバに伝える
+
+1 GET
+リソースの取得（Webページ、画像、映像、フィード）
+
+*フィードとは・・・・Webサイトの更新状況を伝えるために、コンテンツの見出し・概要・全体などを配信するために加工した、特別な書式の文書、またはその形式。
+
+
+Request.
+GET /list HTTP/1.1
+Host: example.jp
+
+
+Response.
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {"uri": "http://example.jp/list/item1"}
+]
+
+
+2 POST
+
+
+A. 子リソースの作成
+
+ブログ記事の投稿などで使われる。
+
+
+
+POST /list HTTP/1.1
+Content-Type: text/plain; charset=utf-8
+
+Qiitaでの初投稿！
+
+
+
+Response.
+HTTP/1.1 201 Created
+Content-Type: text/plain; charset=utf-8
+Location: http://example.jp/list/item5
+
+Qiitaでの初投稿！
+
+
+
+
+
+
+
+
+
+
+B.リソースへのデータの追加
+
+既存リソースへのデータの追加
+
+POST /log HTTP/1.1
+Host: example.jp
+
+2017-02-24T10:13:00Z, GET /log, 200
+Response.
+HTTP/1.1 200 OK （*200 データの追加のためOKが返る）
+
+
+C. ほかのメソッドでは対応できない処理
+
+検索結果を表示するURIなど
+
+検索キーワードがとてもながい場合、URIにキーワードを入れてGETする方式は使えない。これはURIを実装する上で、2000文字の制限があるため。
+こういうときにPOSTを使う。
+
+
+
+Request.
+POST /search HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+q=very+long+keyword+foo+bar+...+....     (←検索)
+
+
+
+
+
+3 PUT
+
+A.リソースの更新
+
+
+
+Request.
+GET /list/item5 HTTP/1.1   (GETでリソースを取得)
+Host: example.jp
+
+
+
+Response.
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+
+Qiita初投稿！
+
+
+
+
+
+Request.
+PUT /list/item5 HTTP/1.1　　　（PUTで更新）
+Host: example.jp
+
+実は2回目！
+
+
+
+
+Response.
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+
+実は2回目！
+
+
+
+
+
+
+B.リソースの作成
+
+POSTでもできるリソースの作成がPUTでもできる。
+
+
+Request.
+PUT /newitem HTTP/1.1　　（http://example.jp/newitemがまだ存在しないとする。）
+Host: example.jp
+Content-Type: text/plain; charset=utf-8
+
+新しいリソース/newitemの内容
+
+
+
+
+
+Response.
+HTTP/1.1 201 Created　　　（201 Createdが返る）
+Content-Type: text/plain; charset=utf-8
+
+新しいリソース/newitemの内容
+
+
+/newitemが存在していた場合は、ただの更新処理になる。
+
+
+
+
+
+4 Delete
+
+
+DELETE /list/item2 HTTP/1.1
+Host: example.jp
+
+
+
+Response.
+HTTP/1.1 200 OK
+
+
+
+DELETEのレスポンスはボディを持たない。
+
+
+
+
+5.HEAD リソースのヘッダ (メタデータの取得)
+
+6. OPTIONS リソースがサポートしているメソッドの取得
+
+7.TRACE プロキシ動作の確認
+
+8.CONNECT プロキシ動作のトンネル接続への変更
+
+
+
+
+
+
+
+CRUDについて
+
+
+CRUDはCreate, Read, Update, Deleteのこと。
+HTTPメソッドのうちGET、POST、PUT、DELETEは「CRUD」を満たす
