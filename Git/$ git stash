@@ -1,0 +1,78 @@
+$ git stash
+
+コミットしていない変更を退避する
+
+stashで変更を退避させて、今すぐやりたい作業をして、退避させていた変更を戻して作業を再開することができる。
+
+コミットしていない変更がある状態の時に、変更した部分が退避されまる。
+
+
+(addしてステータスで確認)
+
+$ git add .
+
+YukinoMacBook-Pro:study yuki$ git status
+On branch feature
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Git/$ git stash
+
+
+（stashで退避）
+
+YukinoMacBook-Pro:study yuki$ git stash
+
+
+Saved working directory and index state WIP on feature: 648aeae git commit amend
+YukinoMacBook-Pro:study yuki$ git status
+On branch feature
+nothing to commit, working tree clean
+
+
+
+
+
+
+$git stash list
+
+退避した作業の一覧を見ることができる
+
+
+
+
+$ git stash list
+stash@{0}: WIP on feature: 648aeae git commit amend
+
+
+
+・stash@{X}がstashの名前
+・WIP onのあとはブランチ名
+・:以降はstashをしたときのHEADのコミットハッシュとコミットメッセージ
+
+
+
+
+$git stash apply stash名
+
+退避した作業を元に戻す
+
+tash名を指定しない場合は、直近に退避された作業を戻す。
+
+
+
+
+
+
+$git stash drop ブランチ名（stash@{0}）
+
+退避した作業を消す
+
+
+
+YukinoMacBook-Pro:study yuki$ git stash drop stash@{0}
+Dropped stash@{0} (43f35d76fb9e8968f74d569901c25662c081e973)
+YukinoMacBook-Pro:study yuki$ git stash list
+YukinoMacBook-Pro:study yuki$
+
+
+

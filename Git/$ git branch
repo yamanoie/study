@@ -13,3 +13,9 @@ $git branch
 $ git branch -m <新しいブランチ名>
 
 今開いているブランチをリネームする
+
+
+
+$ git branch -d ブランチ名
+
+ブランチの削除
