@@ -19,3 +19,26 @@ Switched to a new branch 'branch'
 $ git branch
 * branch
   master
+
+
+
+
+
+
+ブランチ名の命名規則
+
+中央リポジトリ
+
+master 現在の製品バージョン。
+develop 次回リリースの開発用。
+
+
+
+開発者リポジトリ
+
+feature-*　新規機能の開発用。developから分岐し、developへマージする。
+release-*　次回リリースの準備用。developから分岐し、developとmasterへマージする。
+hotfix-*　現在の製品バージョンのバグフィックス用。masterから分岐し、developとmasterへマージする。
+
+
+

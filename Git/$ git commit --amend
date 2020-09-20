@@ -1,0 +1,26 @@
+$ git commit --amend
+
+コミットメッセージを修正する
+
+エディターが開く
+
+
+
+
+
+git branch(←コミットメっセージ)
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Sun Sep 20 14:19:34 2020 +0900
+#
+# On branch feature
+# Changes to be committed:
+#       modified:   .DS_Store
+#       new file:   Git/$ git branch
+#       new file:   Git/$git checkout
+#
+# Changes not staged for commit:
+#       modified:   Git/$git checkout
+#
