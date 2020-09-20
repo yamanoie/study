@@ -24,6 +24,7 @@ $ git branch
 
 
 
+
 ブランチ名の命名規則
 
 中央リポジトリ
@@ -38,5 +39,6 @@ develop 次回リリースの開発用。
 feature-*　新規機能の開発用。developから分岐し、developへマージする。
 release-*　次回リリースの準備用。developから分岐し、developとmasterへマージする。
 hotfix-*　現在の製品バージョンのバグフィックス用。masterから分岐し、developとmasterへマージする。
+
 
 
