@@ -1,0 +1,21 @@
+$git checkout
+
+作業ブランチを切り替える
+
+$git checkout ブランチ名
+
+
+
+
+$git checkout -b ブランチ名
+
+ブランチ新規作成とチェックアウトを同時に行う
+
+
+$ git checkout  -b branch
+Switched to a new branch 'branch'
+
+
+$ git branch
+* branch
+  master
