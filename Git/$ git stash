@@ -72,7 +72,7 @@ $git stash drop ブランチ名（stash@{0}）
 YukinoMacBook-Pro:study yuki$ git stash drop stash@{0}
 Dropped stash@{0} (43f35d76fb9e8968f74d569901c25662c081e973)
 YukinoMacBook-Pro:study yuki$ git stash list
-YukinoMacBook-Pro:study yuki$ 
+YukinoMacBook-Pro:study yuki$
 
 
 
