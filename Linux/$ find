@@ -1,0 +1,40 @@
+$ find
+
+ファイルやディレクトリを検索する
+
+study yuki$ find Git(studyディレクトリのGitを探す)
+
+
+Git
+Git/VCSについて
+Git/$git diff
+Git/$ git commit --amend
+Git/$ git stash
+Git/$ git clone
+Git/$ git push
+Git/$git status
+Git/$git reset
+Git/$git log
+Git/$git checkout
+Git/$ git branch
+Git/$ git revert
+
+
+
+
+オプション -name
+
+
+ワイルドカードを使用して、ファイルやディレクトリ名の一部のみ指定した検索
+ファイル名やディレクトリ名が一部しかわからない場合でもワイルドカードを使って検索できる。
+ワイルドカードは直前に「\」でエスケープしないとエラーや想定した動作にならない
+
+＊＊ワイルドカードとは
+
+
+全てのパターンにマッチする文字列
+「?」は任意の一文字を、「*」は任意の長さの任意の文字列を表す。
+「ta?e」という表記は「take」「tale」「tape」などに一致し、「ta*e」という表記はこれらに加えて「taste」「tackle」などにも一致する。
+
+
+
