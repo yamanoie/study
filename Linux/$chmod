@@ -1,0 +1,51 @@
+$chmod
+
+アクセス権限を変更する
+
+
+
+$chmod 変更対象 変更方法 変更内容 対象ファイル
+chmod u+x chmod
+
+
+YukinoMacBook-Pro:Linux yuki$ ls -l
+total 72
+-rw-r--r--  1 yuki  staff  1858  9 16 15:06 $ cat
+-rw-r--r--  1 yuki  staff  1074  9 21 18:40 $ find
+-rw-r--r--  1 yuki  staff  1197  9 16 16:14 $ grep
+-rw-r--r--  1 yuki  staff  4650  9 16 14:57 $ ls
+-rw-r--r--  1 yuki  staff   620  9 17 16:57 $ mv
+-rw-r--r--  1 yuki  staff  5141  9 16 11:43 $ ps aux
+-rw-r--r--  1 yuki  staff   744  9 16 14:08 $ rails s 
+-rw-r--r--  1 yuki  staff     0  9 21 18:48 chmod(このファイルの権限を変える)
+
+
+
+YukinoMacBook-Pro:Linux yuki$ chmod u+x chmod （ユーザー(u)に実行権限(x)を追加(+)）
+YukinoMacBook-Pro:Linux yuki$ ls -l
+total 72
+-rw-r--r--  1 yuki  staff  1858  9 16 15:06 $ cat
+-rw-r--r--  1 yuki  staff  1074  9 21 18:40 $ find
+-rw-r--r--  1 yuki  staff  1197  9 16 16:14 $ grep
+-rw-r--r--  1 yuki  staff  4650  9 16 14:57 $ ls
+-rw-r--r--  1 yuki  staff   620  9 17 16:57 $ mv
+-rw-r--r--  1 yuki  staff  5141  9 16 11:43 $ ps aux
+-rw-r--r--  1 yuki  staff   744  9 16 14:08 $ rails s 
+-rwxr--r--  1 yuki  staff     0  9 21 18:48 chmod (xが追加された)
+
+
+
+
+u	ユーザー
+g	グループ
+o	その他
+a	すべて
+
+
+=	指定した権限にする
++	指定した権限を付与する
+-	指定した権限を除去する
+
+r	読み取り
+w	書き込み
+x	実行
