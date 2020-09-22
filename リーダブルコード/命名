@@ -14,3 +14,10 @@ for文やwhile文で良く出てくる変数のi,jなどのこと。
 
 i・j・kではなくて説明的な名前(club_i・members_i・users_i）にする。
 あるいは、もっと簡潔なもの（ci・mi・ui）でもいい。
+
+
+３、省略系は汎用的なもののみ
+
+BackEndManager = BENanager
+とすると、新しいチームメンバーはわからない。
+汎用的な省略（string=strなど）以外は省略しない

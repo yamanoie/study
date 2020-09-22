@@ -47,3 +47,8 @@ GLOBAL_OBJECT
 hoge-hoge
 htmlタグの属性(data-*など)
 htmlタグのclass指定
+
+
+５、制御フロー
+
+制御の流れ。コンピューターがスクリプト内の文を実行する順序
