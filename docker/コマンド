@@ -1,0 +1,60 @@
+コマンド
+
+# コンテナの起動
+
+$docker run -d -p 8080:80 --name nginx nginx
+
+
+# コンテナを停止
+
+$ docker stop nginx
+
+
+
+# コンテナを起動
+
+$ docker start nginx
+
+
+
+
+仮想マシンの停止と起動
+
+dockerをインストールすると　MobyLinuxVMという仮想マシンがデフォルトで作成される。
+これら仮想マシンの上でコンテナが起動する。
+
+
+
+
+
+# 仮想マシンの停止
+
+$ docker-machine stop
+
+
+# 仮想マシンの起動
+
+$ docker-machine start
+
+# 仮想マシン一覧の確認
+
+$ docker-machine ls
+
+
+# 起動中のDockerコンテナを確認
+
+$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+
+
+
+
+
+# 起動中、停止中にかかわらず、作成された全てのDockerコンテナを確認（-a オプション）
+
+$ docker ps -a
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS                  NAMES
+bebee7ed3f41        nginx               "nginx -g 'daemon of…"   25 hours ago        Exited (255) 21 hours ago   0.0.0.0:8080->80/tcp   nginx

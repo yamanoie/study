@@ -1,0 +1,13 @@
+container
+
+dockerエンジンの上で動いている仮想環境
+ホストOSのカーネルを利用して動いている
+
+Docker Image がスナップショットだとしたら
+Docker Container はその 「スナップショットから起動したプロセス」
+
+docker run を実行するとDocker Image をもとにしてDocker Containerが作成され、隔離された環境が作成される。
+
+コンテナは1つのコマンドを実行してプロセスを実行する
+基本的に「1コンテナ1プロセス」
+

@@ -1,0 +1,47 @@
+dockerfile
+
+Docker Image は Dockerfile というファイルを記述し、そのファイルを元にビルドすることでスナップショットの作成ができる。
+オリジナルのdocker imageを作ることができる。
+構築手順をコードとしてファイルに残せる　＝＞　Infrastructure as Code
+
+Dockerfile の編集
+
+Dockerfileは独自のDSLで記述。
+Dockerfileは「 ubuntu というDocker Imageをもとに、ホストの hello.txt をコンテナの /tmp/hello.txt へコピーして、 cat /tmp/hello.txt コマンドを実行」という意味。
+
+
+
+$ vi Dockerfile
+
+
+FROM ubuntu
+
+COPY hello.txt /tmp/hello.txt
+
+CMD ["cat", "/tmp/hello.txt"]
+
+
+
+
+
+
+$ docker build -t hello .
+
+docker build コマンドで Dockerfile からDocker Image を作成。
+-t hello オプションは「Docker Imageを hello という名前にする」という意味。
+. はdocker build 実行時のコンテキストの指定。 . は COPY コマンドを実行する際にどのディレクトリを起点とするかを指定。
+
+
+
+
+
+$ docker images
+
+現在ローカルに存在するDocker Image の一覧を確認することができる。
+
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello               latest              59e1a587fe86        13 seconds ago      88.9MB
+ubuntu              latest              94e814e2efa8        6 days ago          88.9MB
+node                latest              9ff38e3a6d9d        10 days ago         904MB
