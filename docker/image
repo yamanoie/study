@@ -1,0 +1,89 @@
+image
+
+
+dockerコンテナを作るためのレシピ
+
+＊レイヤ　　元になるイメージにレイヤを重ねることで新たなイメージを作ることができる
+＊ベースイメージ　元になるイメージのこと。dockerhubなどで提供されいているNginxなどのWebサーバなどのこと。
+ベースイメージに対する変更＝レイヤ　レイヤを重ねることでイメージをカスタマイズできる
+
+一つのイメージから複数のコンテナを作ることができる
+
+
+
+＊dockerレジストリ
+
+dockerイメージを保存しているところ
+
+
+
+
+
+
+
+コマンド
+
+$ docker run -P nginx
+
+nginxを起動( docker run nginx )し、設定されているポートを公開( -P )
+imageの起動
+
+
+
+
+$ docker pull ubuntu
+
+UbuntuのDocker ImageをDockerHub上から取得。
+＊　Docker Image はDockerの公式が DockerHub と呼ばれるサービス上で様々なOS・ソフトウェアを公開している
+
+
+
+
+
+
+$ docker run -i -t ubuntu bash　（対話が必要なプロセス）
+
+-i はコンテナの標準入力を有効化、 -t はttyを有効化するためのオプション。
+docker run -it ... のように省略することも可能。
+
+
+
+$ docker search ruby
+
+docker search <LANGUAGE> でパブリックなDocker Image を探すことができる。
+
+OFFICIAL カラムに [ok] と記載されているものがDocker公式に認められたイメージ
+
+
+
+
+
+
+$ docker run ruby ruby -e 'puts "Hello, Docker!"'
+
+ruby イメージを使用して標準出力を出力する。
+docker pull <イメージ名> で取得していないDocker Imageを docker run の際に指定すると自動的にDockerHubへ取得しに行く。
+
+
+
+
+
+
+$ docker run python python --version
+Python 3.7.2
+
+
+DockerImageにはtagという"ラベル"の役割を持つ機能がある。
+基本的にバージョン管理を目的に使用されることが多い。
+
+
+
+$ docker run python:2.7 python --version
+Python 2.7.16
+
+
+
+
+$ docker search centos
+
+docker imageの検索
