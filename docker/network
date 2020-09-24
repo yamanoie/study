@@ -1,0 +1,18 @@
+network
+
+複数のDockerコンテナをまとめて管理するための仕組み。
+
+Dockerネットワークを利用することで、コンテナにつけた名前を「ホスト名」として指定できるようになり、コンテナ間での通信が簡単に実現できるようになる。
+
+
+
+# Dockerネットワーク作成
+
+$ docker network create test-network
+
+
+
+
+# Dockerネットワーク一覧
+
+$ docker network ls
