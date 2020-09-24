@@ -1,0 +1,156 @@
+docker compose
+
+複数のdockerコンテナからなるアプリを定義し、操作するためのツール
+imageの作成方法やコンテナ起動時などを　docker-compose.ymlに記述することで、
+docker composeコマンドでまとめて操作できる。
+
+
+メリット
+
+・コンテナ間の通信ができる（networkを作成しなくていい）→自動で　ディレクトリ名_default　というネットワークを作成する
+・インフラ構成の可視化、バージョン管理が可能
+・docker build(imageを作成する)やdocker run（コンテナを起動）をコンテナの数だけしなくて済む。
+
+＊docker run や docker buildの代わりに docker-compose.ymlとdockerfileを使う
+
+
+
+1, docker-compose.yml
+
+
+key:valueの関係になっている。
+
+
+サンプル
+
+version: '2'
+services:
+  app:
+    build: rails
+    environment:
+      APP_DATABASE_HOST: db
+      APP_DATABASE: app_development
+      APP_DATABASE_USER: root
+      APP_DATABASE_PASSWORD: root
+    depends_on:
+      - db
+  db:
+    build: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  web:
+    build: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/log:/var/log/nginx
+    volumes_from:
+      - app
+    depends_on:
+      - app
+
+
+
+# version
+
+docker composeのバージョン
+３まである　*3だと voulums_fromが使えない
+
+
+# services
+
+アプリケーションを構成するためのサービス設定。
+app,db,webの３つ
+これらのサービスごとにビルドされ、各設定にしたがってコンテナが作成され起動する。
+
+
+# build
+
+dockerfileの場所を指定する。
+
+
+docker
+├── docker-compose.yml
+├── rails
+│   └── Dockerfile
+├── mysql
+│   └── Dockerfile
+└── nginx
+    └── Dockerfile
+
+
+# environment
+
+コンテナ内で利用する環境変数を設定。
+
+
+# depends_on
+
+サービス同士の依存関係を設定。
+この設定でコンテナの起動タイミングが変わる。
+
+
+depends_on:
+      - db
+
+この場合、dbサービスが起動した後にappサービスが起動するようになる。
+
+
+# ports
+
+ホストマシンとゲストマシンのポートフォワードを設定。
+
+
+# volumes
+
+マウント（利用できるように認識させる）するための設定
+
+volumes:
+      - ./nginx/log:/var/log/nginx
+
+この場合、ホストマシンの指定されたディレクトリにコンテナ内のNginxのログファイルをマウントしている。
+これでコンテナを停止してもホストマシンからログを確認できるようになる。
+
+
+# volumes_from
+
+コンテナ間でマウントするための設定。
+
+app:
+volumes_from:
+      - app
+
+この場合、appサービスのコンテナをwebサービスのコンテナにマウントするようにしている。
+
+
+
+
+
+
+
+
+2, docker-compose
+
+
+docker-compose.ymlをつかってコンテナ間で通信する。
+
+
+
+
+docker
+├── docker-compose.yml
+├── rails
+│   ├── Dockerfile
+│   ├── Gemfile
+│   ├── Gemfile.lock
+│   └── config
+│       ├── database.yml
+│       └── puma.rb
+├── mysql
+│   ├── Dockerfile
+│   └── app.cnf
+└── nginx
+    ├── Dockerfile
+    └── nginx.conf
+
+

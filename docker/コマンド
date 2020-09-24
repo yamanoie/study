@@ -4,6 +4,15 @@
 
 $docker run -d -p 8080:80 --name nginx nginx
 
+$docker run -it -d -p 8080:80 --name centos centos:7
+
+オプション
+「-it」…ホストとコンテナの標準入出力を繋げる
+「-d」…バックグラウンドで実行
+「-p」…「ホストマシンのポート：コンテナのポート」でポートフォワード（転送）
+「--name」…コンテナに名前をつける
+
+
 
 # コンテナを停止
 
@@ -14,6 +23,14 @@ $ docker stop nginx
 # コンテナを起動
 
 $ docker start nginx
+
+
+
+
+
+$docker exec -it container_name bashを実行することで、
+コンテナの中で新しく「/bin/bash」プロセスを作成してログインする。
+
 
 
 
