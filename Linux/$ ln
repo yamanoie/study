@@ -1,0 +1,16 @@
+$ ln
+
+
+シンボリックリンクを作成
+
+
+# 「link_name」に「file」へのシンボリックリンクを貼る
+
+$ln -s file link_name
+
+# 「link_name」に「dir」へのシンボリックリンクを貼る
+ln -s dir link_name
+
+
+
+「-s」オプションが、「シンボリック（symbolic）」をあらわす。

@@ -42,3 +42,10 @@ $ grep
   376  cat puma.state
   390  tail -f puma.log
   448  history | grep puma
+
+
+
+
+| パイプ
+
+コマンドの結果を、次のコマンドの引数に渡したいときに使う。

@@ -1,0 +1,14 @@
+Nginx
+
+etcディレクトリの下に作られる
+/etc/nginx
+
+
+# ディレクティブ
+server,listen,locationなどの項目のこと
+
+この２つの設定ファイルがデフォルトである
+/etc/nginx/nginx.conf
+/etc/nginx/conf.d/default.conf
+
+
