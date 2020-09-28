@@ -46,6 +46,9 @@ $ docker run -i -t ubuntu bash　（対話が必要なプロセス）
 -i はコンテナの標準入力を有効化、 -t はttyを有効化するためのオプション。
 docker run -it ... のように省略することも可能。
 
+先のdocker pullをしてイメージを取得しなくても、docker run実行時にそのイメージがない場合は自動的にpullする。
+コンテナにログインしたいときには、–itと/bin/bashや/bin/shなどのシェルをセットで指定する。
+
 
 
 $ docker search ruby

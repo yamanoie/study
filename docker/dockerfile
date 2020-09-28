@@ -11,6 +11,112 @@ Dockerfileは「 ubuntu というDocker Imageをもとに、ホストの hello.t
 
 
 
+＃dockerfileを使わない場合
+
+例）CentOSにApacheとPHPをインストールし、簡単なPHPアプリをコピーしてApacheを起動する。
+
+
+１、CentOS7のイメージからtestwebというコンテナを作成してデーモンとして起動し、ローカルの8080にアクセスしたらコンテナの80にポートフォワードされるようにする
+
+
+$ docker run -d -it -p 8080:80 --name testweb centos:centos7
+
+
+２、コンテナにログイン
+
+
+$ docker exec -it testweb /bin/bash
+
+
+３、Apacheをインストール
+
+# yum install httpd
+
+
+４、phpをインストール
+
+
+# yum install php
+
+
+
+５、Apacheを起動
+
+
+# /usr/sbin/httpd
+
+
+
+６、コンテナから抜ける。
+
+
+# exit
+
+
+７、以下のようなPHPファイルを作成。
+
+test.phpPHP
+<?php
+  echo "hoge";
+?>
+
+
+８、コンテナにコピー。
+
+
+$ docker cp test.php testweb:/var/www/html
+
+
+
+
+
+＃dockerfileを使う場合
+
+FROM centos:centos7
+
+RUN yum -y install httpd php
+
+COPY test.php /var/www/html/
+
+CMD ["/usr/sbin/httpd","-DFOREGROUND"]
+
+
+dockerfileのあるディレクトリで、
+
+$ docker build -t testphpimg .
+
+
+新しいイメージができているのが確認。
+
+
+$ docker images
+REPOSITORY                                          TAG                 IMAGE ID            CREATED             SIZE
+testphpimg                                          latest              63fa8ae5a4b5        2 minutes ago       360MB
+
+
+先程のイメージからコンテンツを作成。
+
+
+$ docker run -d -p 8080:80 --name testphpimg testweb:latest
+
+
+
+
+
+
+＃流れ
+
+１、Dockerfileを作成
+２、docker buildコマンドでDockerfileを元にイメージを作成
+３、作成したイメージを元にコンテナを起動
+
+
+
+
+＃コマンド
+
+
+
 $ vi Dockerfile
 
 
@@ -30,7 +136,7 @@ $ docker build -t hello .
 docker build コマンドで Dockerfile からDocker Image を作成。
 -t hello オプションは「Docker Imageを hello という名前にする」という意味。
 . はdocker build 実行時のコンテキストの指定。 . は COPY コマンドを実行する際にどのディレクトリを起点とするかを指定。
-
+タグ名を指定しないと自動的にlatestというタグ名が付与。
 
 
 
@@ -48,12 +154,13 @@ node                latest              9ff38e3a6d9d        10 days ago         
 
 
 
-基本的なコマンド
+
 
 
 
 FROM
 
+FROMで指定したDockerイメージをベースに、これから記述するコマンドを実施しますよという意味
 ベースとなるDocker Image を指定。
 DockerはベースとなるDocker Image の上に COPY や RUN のようなコマンドを重ねてDocker Image を作成。
 ベースとなるDocker Image は公式で提供されているImageを使用するのが一般的。
@@ -61,17 +168,29 @@ DockerはベースとなるDocker Image の上に COPY や RUN のようなコ�
 ここで指定されたイメージが「Docker Hub」にあるかを検索し、存在すれば自動でダウンロードするようになっている。
 
 
+FROM [イメージ名]:[タグ名]
 
 例　　FROM node
 
 
+ADD
+
+COPYコマンドとほぼ同じだが、以下の2点が異なる。
+
+１、URLの指定が可能である
+２、tarアーカイブでgzip、bzip2、xzで圧縮されていた場合、自動で展開される
+
+ADD [イメージ内にコピーしたいファイルのパスやURLなど] [コピー先のイメージのパス]
+
+　例）ADD http://ftp.meisei-u.ac.jp/mirror/apache/dist/tomcat/tomcat-8/v8.5.54/bin/apache-tomcat-8.5.54.tar.gz /tmp
 
 
 ENV
 
 Docker内で使用する環境変数を定義。
 NODE_ENV のようなDockerの起動時にデフォルトで定義されていてほしい環境変数を定義すると良い。
-
+例えば、docker buildでビルドされるMySQLのコンテナを作成する際、そのDB接続ユーザー名やパスワードをビルドの結果作成されるイメージに埋め込みたい場合、このENVで環境変数としてDB接続ユーザー名やパスワードを渡す。
+ENV [環境変数名]=[環境変数の値]
 
 例　　　ENV NODE_ENV=production
 
@@ -89,25 +208,33 @@ Dockerfileでコマンドを実行する際に基準となるディレクトリ�
 
 COPY
 
+ローカルにあるファイルをイメージ上にコピー
+docker buildした結果できあがるDockerイメージ内にコピーしたいファイルを指定。
 Docker内へホストのファイル/ディレクトリをコピーする。
 COPY は基本的に2つの引数を設定。1つ目はホスト側のディレクトリ、2つ目はDocker側のディレクトリ。
 ホスト側のディレクトリは docker build . で指定したディレクトリです。この場合 . を指定しており、カレントディレクトリが参照される。
 Docker側は WORKDIR で定義されたディレクトリを参照します。
 
+COPY [イメージ内にコピーしたいファイルのパス] [コピー先のイメージのパス]
 
 例　　　COPY . .
+
 
 
 RUN
 
 Docker内でコマンドを実行。
 ここでコンテナへ依存するライブラリやパッケージのインストールやユーザーの設定などの処理を実行する。
-「yum」や「apt」などのコマンドを実行する際は、この「RUN」をメインに使う。
+「yum」（Apacheなどのインストール）や「apt」（Ubuntuのコマンド）などのコマンドを実行する際は、この「RUN」をメインに使う。
 
-　例　　RUN npm install \
+　例１　　RUN npm install \
 	  && groupadd app \
 	  && useradd -g app app \
 	  && chown -R app:app /scripts
+
+　例２　　RUN yum -y install httpd
+
+「-y」オプションをつけないと、途中で本当にインストールしていいかどうかという確認を聞かれるので、そのようなことがないように「-y」オプションが必須。
 
 
 
@@ -128,6 +255,28 @@ CMD
 Docker起動時にデフォルトで実行されるコマンドを定義。
 Dockerはここで設定したコマンドがフォアグラウンドで実行されている間が生存期間になる。
 そのため、プロセスの処理が走っている間はフォアグラウンドで実行するように記述(バックグラウンドで起動するとDockerが終了してしまう)。
-
+コマンド内のスペースは,(カンマ)で区切る。
 
 例　CMD ["npm", "run", "start"]
+
+
+
+EXPOSE
+
+Dockerコンテナ内で公開するポートを指定。
+EXPOSEはDockerのコンテナのポートを公開するだけなので、もしホストPC(Dockerデーモンが起動しているPC)からDockerコンテナ内のApacheにアクセスする場合は、ホストPCのポートとコンテナのポートを紐付けてあげる必要がある。例えばホストPC上の8080ポートとコンテナの80ポートを紐付ける場合にはdocker runコマンドのオプションに-p 8080:80というのを指定する必要がある。
+
+EXPOSE [ポート番号]
+
+
+
+
+
+
+
+＃RUNもCOPYもCMDもコマンドを実行するもの
+
+実行タイミングが違う
+
+RUNやCOPYコマンドはベースイメージから、新たなイメージを作成するとき、そのイメージに対して実行される。
+CMDコマンドは、出来上がったイメージからコンテナを生成するときに一度だけ実行されるコマンド。
