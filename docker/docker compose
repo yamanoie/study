@@ -15,6 +15,86 @@ docker composeコマンドでまとめて操作できる。
 
 
 
+
+
+＃docker-composeを使わない場合
+
+例）　WordPressとMySQLのコンテナを立ち上げて、WordPressからMySQLにアクセスできるような環境。
+
+
+
+１、Dockerのネットワークの作成
+
+
+$ docker network create wp-network
+
+
+２、　Mysqlのコンテナ作成
+
+$ docker run -d --name mysql \
+--network wp-network \
+-e MYSQL_ROOT_PASSWORD=wordpress \
+-e MYSQL_DATABASE=wordpress \
+-e MYSQL_USER=wordpress \
+-e MYSQL_PASSWORD=wordpress \
+
+mysqlという名前のコンテナを作成し、デーモンで起動。
+
+
+
+３、　WordPressのコンテナ作成
+
+$ docker run -d --name wordpress \
+-p 80:80 \
+-e WORDPRESS_DB_HOST=mysql:3306 \
+-e WORDPRESS_DB_NAME=wordpress \
+-e WORDPRESS_DB_USER=wordpress \
+-e WORDPRESS_DB_PASSWORD=wordpress \
+
+wordpressという名前のコンテナを作成し、デーモンで起動
+
+
+
+
+
+
+
+
+＃dockerーcomposeを使う場合
+
+
+１、docker-compose.ymlを作成
+
+
+docker-compose.yml
+
+version: '3'
+
+services:
+   mysql:
+     image: mysql:8.0.20
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: wordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     depends_on:
+       - mysql
+     image: wordpress:php7.4-apache
+     ports:
+       - "80:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: mysql:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress
+
+
+
+
 1, docker-compose.yml
 
 
@@ -51,6 +131,15 @@ services:
 
 
 
+２、以下のコマンドを実行
+
+$ docker-compose up -d
+
+
+
+
+
+
 # version
 
 docker composeのバージョン
@@ -60,6 +149,7 @@ docker composeのバージョン
 # services
 
 アプリケーションを構成するためのサービス設定。
+サービス＝コンテナと考えて良い。
 app,db,webの３つ
 これらのサービスごとにビルドされ、各設定にしたがってコンテナが作成され起動する。
 
@@ -83,6 +173,13 @@ docker
 
 コンテナ内で利用する環境変数を設定。
 
+# context
+
+contextはDockerfileのあるディレクトリを表す。
+
+# restart
+
+これをalwaysにするとホストOSやDockerデーモン起動時にコンテナが自動的に起動。PCを立ち上げたらコンテナも合わせて起動したいときに便利
 
 # depends_on
 
@@ -100,9 +197,19 @@ depends_on:
 
 ホストマシンとゲストマシンのポートフォワードを設定。
 
+ports:
+　　　　 - "80:80"
+
+localhostの80番ポートあての通信をコンテナの80番ポートに転送する設定
+
+
+#image
+
+WordPressの公式イメージを取得する定義
 
 # volumes
 
+コンテナのデータを永続化する
 マウント（利用できるように認識させる）するための設定
 
 volumes:
@@ -154,3 +261,15 @@ docker
     └── nginx.conf
 
 
+
+
+＃ コマンド
+
+
+$ docker-compose up
+
+作成した設定ファイルに基づいて、コンテナを起動
+
+$ docker-compose stop
+
+コンテナの停止
