@@ -1,0 +1,8 @@
+CRUD
+
+データを操作する際に必要な最低限の機能
+
+C　create 登録
+R　read 参照
+U　update 更新
+D  delete　削除
