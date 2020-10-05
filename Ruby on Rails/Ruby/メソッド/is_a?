@@ -1,0 +1,29 @@
+is_a?
+
+自分のクラス、親のクラス、インクルードしているモジュールについてチェックできるメソッド。
+kind_of?も同じエイリアス
+
+
+module M
+end
+
+class Sample < Object
+end
+
+obj = Sample.new
+
+
+p 'is_a?'
+p obj.is_a?(Sample)
+p obj.is_a?(Object)
+p obj.is_a?(M)
+p obj.is_a?(Integer)
+
+
+出力結果
+
+"is_a?"
+true
+true
+false
+false

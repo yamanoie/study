@@ -1,0 +1,23 @@
+SecureRandom
+
+ランダムな文字列を生成できるモジュール
+
+＃alphanumeric
+ランダムな英数字を生成
+
+SecureRandom.alphanumeric(10)
+=> "kgB4J3YIaZ" # ランダムな10文字の文字列
+
+
+#Base64
+ランダムな Base64 文字列を生成
+
+ SecureRandom.base64(10)
+=> "bNerswht86v73w=="
+
+
+#urlsafe_base64
+URL-safe な base64 文字列を生成
+
+SecureRandom.urlsafe_base64(10)
+=> "VCImyjTyVhYy1w"

@@ -1,0 +1,20 @@
+any
+
+モデルにデータが存在する → true
+モデルにデータが存在しない → false
+を返すメソッド。
+
+
+
+＃where条件とany?メソッドの組み合わせ
+
+
+
+検索結果の件数が1件以上の場合にany?メソッドはtrueを返す
+
+
+> User.where(name: "tarou").any?
+=> true
+
+> User.where(name: "hanako").any?
+=> false

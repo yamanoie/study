@@ -1,0 +1,38 @@
+1-10
+
+#1 Use Time.zone.now instead of Time.now
+
+Time.zone = "Alaska"
+Time.now
+Date.today
+
+<Refactor>
+
+Time.zone.now
+Time.zone.today
+
+
+
+
+#2 Don't modify the params hash
+
+def search
+   params.except!(:action, :controller)
+   @search = User.search(params)
+   render "search"
+end
+
+<Refactor>
+
+
+def search
+  @search = User.search(search_params)
+  render "search"
+end
+
+private
+
+def search_params
+  # params.except(:action, :controller)
+  params.permit(:user_id, :name)
+end

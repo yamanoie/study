@@ -1,0 +1,30 @@
+scope
+
+（modelの）scopeとは複数のクエリをまとめたメソッド
+scopeとは、クラスメソッドを使う際、可読性を保つためにあるもの
+SQL文をメソッド化できる
+
+例えば、
+
+User.order(id: desc).limit(5)
+
+このような記述をもしいろんなところで使うとした場合、長ったらしいメソッドチェーンを書くのは面倒だし、コントローラ側で使うときに可読性が落ちる。
+
+
+user.rb
+
+class User < ApplicationRecord
+  scope :recent, -> { order(id: :desc).limit(5) }
+end
+
+
+
+users/controller.rb
+
+class UsersController < ApplicationController
+
+def index
+  @users = User.recent
+end
+
+コントローラ側でもUser.recentを使えるようになる。

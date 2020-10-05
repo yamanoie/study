@@ -1,0 +1,52 @@
+refile
+
+ファイルのアップロード先を柔軟に設定できる
+簡単に組み込める
+画像のサムネイルを生成できる
+
+
+#導入まで
+
+
+
+1,モデルにカラムを持たせる(image_id) データ型はstring
+
+$ rails g migration add_image_id_to_posts image_id:string
+$ rails db:migrate
+
+
+2,attachment(アタッチメント)メソッドを持たせる
+
+image_idを持たせたモデルにattachement :image
+
+例）
+
+class PostImage < ApplicationRecord
+
+  attachment :image # ここを追加（_idは含めない）
+
+end
+
+
+
+＃ファイルアップロードのフォーム
+
+<%= f.attachment_field :image %>
+カラム名はimage_idでも:imageを引数にする
+
+
+＃画面に埋め込む
+
+<%= attachment_image_tag モデル名, :image, :fill, 横幅の数値(例: 100), 縦幅の数値, format: '拡張子名(例: jpg)' %>
+
+
+
+
+
+
+
+
+#MiniMagick
+
+アップロードした画像のリサイズ等を簡単に実装出来るgem。
+refileとセットで使う

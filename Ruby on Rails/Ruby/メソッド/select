@@ -1,0 +1,15 @@
+select
+
+条件にマッチした要素を返した配列を作る
+
+
+array = [1,2,3,4,5]
+p array.select { |num| num > 3 }
+p array.select { |num| num == 3 }
+p array.select { |num| num <= 3 }
+
+[実行結果]
+
+[4, 5]
+[3]
+[1, 2, 3]

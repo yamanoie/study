@@ -1,0 +1,75 @@
+whenever
+
+定期的に実行したいタスクを設定するgem
+
+
+＃4種のスケジューリング
+
+command: bashコマンド実行
+rake: rakeタスク実行
+runner: Rails内のメソッド実行
+script: scriptの実行
+
+
+
+#導入
+
+bundle installが終わったら
+
+＄wheneverize .
+
+のコマンドを入力。
+
+config/schedule.rb　というファイルが作成されているので、ここに定期実行したいタスク・バッチの設定を書き込んで反映させていく。
+
+
+
+
+
+
+# cron
+
+UNIX系OSで標準的に利用される常駐プログラム（デーモン）の一種で、利用者の設定したスケジュールに従って指定されたプログラムを定期的に起動してくれるもの。
+
+
+cronを実行するために必要なコマンドが「crontab」
+crontab（“cron table”の略）コマンドで実行したいプログラムやコマンド、シェルスクリプトなどと実行日時を指定すると、同名のテキストファイル（crontabファイル）に設定が保存される。システムに常駐するデーモンの一つであるcrond（“cron daemon”の略）がcrontabファイルに書かれたスケジュールに従って、決まった日時に指定されたプログラムを実行する。
+
+
+#流れ
+
+
+１、schedule.rbに設定を書く
+
+例）config/schedule.rb
+
+nv :PATH, ENV['PATH'] # 絶対パスから相対パス指定
+set :output, 'log/cron.log' # ログの出力先ファイルを設定
+set :environment, :development # 環境を設定
+
+
+every 1.minute do // 1分おきに実行
+  runner "Post.create_test" // Postモデルのcreate_testアクションを実行
+end
+
+
+
+２、modelにメソッドを書く
+
+model/post.rb
+
+def self.create_test // レシーバ指定なし
+  Post.create(title: "test", body: "testtest")
+end
+
+
+
+３、cronの設定
+
+$bundle exec whenever --update-crontab
+
+
+
+cronの削除
+
+＄bundle exec whenever --clear-crontab

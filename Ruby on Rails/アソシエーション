@@ -1,0 +1,25 @@
+アソシエーション
+
+＃アソシエーションメソッド
+
+
+・class_name
+
+一つのモデルに対して、二つのアソシエーション経路を組む
+便宜的にモデルを二つに分けることができ、実際は一つのモデルを見に行くということができる。
+
+例）
+belongs_to :user
+belongs_to :guest, class_name: 'User'
+
+
+
+belongs_to :visitor, class_name: 'User'
+belongs_to :visited, class_name: 'User'
+
+
+
+
+・optional: true
+
+trueにすると外部キーのnilを許可する

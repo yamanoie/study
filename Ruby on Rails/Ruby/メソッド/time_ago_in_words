@@ -1,0 +1,5 @@
+time_ago_in_words
+
+created_atで作成日時を表示する際に、Twitterのように「〜前」という表示をする方法
+
+<%= time_ago_in_words(post.created_at) %>前に作成
