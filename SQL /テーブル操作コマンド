@@ -1,0 +1,79 @@
+テーブル操作コマンド
+
+
+#テーブル一覧の表示
+
+SHOW TABLES;
+
+
+
+#テーブル作成
+
+CREATE TABLE [テーブル名] (
+	column名 データ型　オプション,
+	column名 データ型　オプション,
+	column名 データ型　オプション,
+);
+
+
+
+
+#テーブルにデータ挿入
+
+INSERT INTO `users`(`id`, `name`, `address`, `tel`) VALUES(1, 'tarou', 'Tokyo', '080-xxxx-oooo');
+
+
+
+#テーブルからデータを取得
+
+SELECT * FROM テーブル名
+
+
+
+#データから一部を取得
+
+SELECT カラム名　FROM テーブル名;
+
+例）
+SELECT `id`, `name` FROM `users`;
+
+
+
+＃条件付きでデータを取得
+
+SELECT * FROM テーブル名 WHERE カラム名 = 条件;
+
+例）
+SELECT * FROM `users` WHERE id = 2;
+
+例）
+SELECT * FROM `users` WHERE id > 3 and id < 6;
+
+
+
+
+#データを並び替えて取得
+
+SELECT * FROM テーブル名　ORDER BY カラム名　ASC/DESC;
+
+例）
+SELECT * FROM `users` ORDER BY id ASC;
+
+
+
+#データを更新
+
+UPDATE テーブル名 SET カラム名　= 新しい値
+
+例）
+UPDATE `users` SET `name` = `hanako` WHERE id =4;
+
+
+
+#データを削除
+
+
+DELETE FROM テーブル名　WHERE 条件
+
+例）
+DELETE FROM `users` WHERE `id` = 4;

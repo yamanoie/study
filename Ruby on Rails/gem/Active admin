@@ -1,0 +1,27 @@
+Active admin
+
+簡単にModelのパラメーター利用してCRUDができる管理画面を作ることができるgem
+データ一覧を見れるようにする。
+ログイン機能を搭載したいならdeviseを入れる。
+
+
+
+
+＃一般ログインと管理アカウントでログインした時のリダイレクト先を分ける必要がある。
+
+application_controller.rb
+
+def after_sign_in_path_for(resource)
+      case resource
+      when User
+        #User(一般ユーザ)がログインした時の処理
+      when AdminUser
+        #AdminUser（管理ユーザ）がログインしたときの処理
+        stored_location_for(resource) ||
+         if resource.is_a?(AdminUser)
+           root_path
+         else
+           super
+         end
+      end
+    end

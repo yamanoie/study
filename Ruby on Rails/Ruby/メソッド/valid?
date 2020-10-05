@@ -1,0 +1,11 @@
+valid?
+
+バリデーションが実行された結果
+エラーが無い場合trueを返し，エラーが発生した場合falseを返す
+
+member = Member.new()
+member.valid?
+
+invalid?
+valid?とは逆の結果を返す
+エラーが発生した場合true，エラーが無い場合falseを返す

@@ -1,0 +1,30 @@
+kaminari
+
+ページネーション機能を簡単に追加できるgem
+
+
+
+＃pageメソッド
+
+page(params[:page])をつける
+
+
+例）
+@posts = Post.all
+@posts = Post.page(params[:page])
+
+
+＃perメソッド
+
+引数にどれだけのレコードが表示されたらページを増やすかを指定できる
+
+例）
+@users = User.page(params[:page]).per(10)
+
+
+
+
+＃View
+
+<%= paginate @users %>
+

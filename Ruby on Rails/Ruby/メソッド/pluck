@@ -1,0 +1,15 @@
+pluck
+
+指定したカラムの配列を取得することができる。
+
+
+
+User.pluck(:id)
+
+#=>[1,2,3]
+
+
+
+User.pluck(:id,:name)
+
+#=>[[1,Tarou],[2,Hanako],[3,Toshi]]

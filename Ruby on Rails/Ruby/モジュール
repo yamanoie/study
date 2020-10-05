@@ -1,0 +1,186 @@
+モジュール
+
+moduleは日本語にすると「部品の集まり」や「区分」という意味
+classと同じようにmodule内に関数の定義ができること、プログラム上での役割や振る舞いをまとめることができる。
+メソッドを入れるための箱
+
+例）
+
+module Number
+  def plus(num1, num2)
+    num1 + num2
+  end
+end
+
+
+
+
+
+
+
+＃モジュール内のメソッドを実行する
+「module_function :メソッド名」
+
+＃モジュールを実行する
+
+「モジュール名.メソッド名」
+
+
+例）
+
+module TestModule
+  def Min(x, y)
+    if x < y
+      return x
+    else
+      return y
+    end
+  end
+ 
+  def Max(x, y)
+    if x > y
+      return x
+    else
+      return y
+    end
+  end
+ 
+  module_function :Min
+  module_function :Max
+end
+ 
+puts TestModule.Min(1, 5)
+puts TestModule.Max(1, 5)
+
+
+実行結果：
+
+1
+5
+
+
+
+
+＃ include
+
+モジュールの性質を他のクラスに追加するために使用されるメソッド
+モジュールをよぶためのメソッド
+
+include モジュール名
+
+
+定義したモジュールをクラスの中でincludeすると、インスタンスを立てることができる
+
+例）
+
+module Sayhello
+  def hello
+    p 'hello'
+  end
+end
+ 
+class Sayhello_2
+  include Sayhello
+end
+ 
+a = Sayhello_2.new
+a.hello
+
+実行結果
+hello
+
+
+＃　クラスとの違い
+
+
+・継承できないこと。
+
+クラスでは一つの親のみしか継承することができない　　単一継承
+
+モジュールは厳密には継承ではないが、Mixinという技術を用いて多重継承を可能にしている
+
+例（クラスの継承）
+
+＊継承するときは<に続けてスーパークラス（親クラス)を定義
+
+
+class Sayhello
+  def hello
+      p "hello_1"
+  end
+end
+ 
+class Sayhello_2< Sayhello
+  def hello_2
+    p "hello_2"
+  end
+end
+ 
+a = Sayhello_2.new
+a.hello
+a.hello_2
+
+結果
+"hello_1"
+"hello_2"
+
+
+
+
+例（module mixin）
+
+
+
+module Say
+  def say
+    p "say"
+  end 
+end
+ 
+module Hello
+  def hello
+    p 'hello'
+  end  
+end
+ 
+class Sayhello
+  include Say
+  include Hello
+end
+ 
+a = Sayhello.new
+a.say
+a.hello
+
+結果
+"say"
+"hello"
+
+
+
+
+
+
+
+・モジュールはインスタンスを立てれない
+
+
+
+・処理の種類ごとに分離することができる
+
+例えば「name」メソッドを同じプログラムで二つ用意したくなったとする。
+普通に書くと、同じメソッド名のメソッドは定義できない。
+しかし以下のようにモジュールで名前空間を分けることで、二つのnameメソッドを定義することができる。
+
+
+module Dog
+  def name
+    #Dog用のname処理
+  end
+end
+
+module Cat
+  def name
+    #Cat用のname処理
+  end
+end

@@ -1,0 +1,55 @@
+N+1問題
+
+1回のクエリで済むところをデータ量(N)の回数、クエリを発行してしまう問題のこと。
+1:多などモデルの関連付けをしている場合に起きやすい
+
+一覧に表示するデータを取得するために SELECT を 1 回実行（N レコード返される）
+各データの関連データを取得するために SELECT を N 回実行
+データベースアクセス（SELECT）が合計 N+1 回も実行される（JOIN して 1 回の SQL で取得した方が効率的）
+
+*
+機能的には問題が無い
+開発時の少ないデータ量では N+1 問題に気付きにくい
+データ量の多い本番環境にリリース後に発覚してショック・・
+
+
+例）
+
+Post Load (0.3ms)  SELECT "posts".* FROM "posts"
+  ↳ app/views/posts/index.html.erb:14
+  Comment Load (0.4ms)  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:17:in `map'
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  ↳ app/views/posts/index.html.erb:17:in `map'
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 3]]
+  ↳ app/views/posts/index.html.erb:17:in `map'
+
+
+上の例ではpostsを読み込むのに1回、そこからpostsに関連するcommentsを読み込むのにpostsのデータ量である3(N)回、合計4回のSQLが発行されている。
+データ量(N)が増えるほど、発行されるSQLが多くなりその分パフォーマンスが低下。
+
+このN+1クエリ（問題）を自動で検出してくれる便利なgemがBullet。Bulletを使うと、RailsのログやブラウザでN+1であることを確認できる。
+
+
+
+
+
+#bullet
+
+N+1 問題を検出してくれるgem
+
+
+
+
+
+
+
+
+# includesメソッド
+
+モデルA.include(:モデルB)
+Aに基づくBを取得。
+
+
+
+@users = User.includes(:post).all

@@ -1,0 +1,41 @@
+ransack
+
+検索フォームを簡単に作れるようになるgem
+
+＃コントローラ
+
+params[:q]には検索パラメータが渡される。それを@search = Model.ransack(params[:q])としてあげれば、@searchという検索オブジェクトが作成される。さらにこの@searchに対して@model = @search.resultとしてあげれば検索結果が得られる。
+
+例）
+
+@search = Match.ransack(params[:q])
+@matches = @search.result
+
+
+＃view
+
+search_form_forはform_forのRansack版。search_form_forの引数に検索オブジェクト@searchをとることで検索フォームを作れる。そして一番のポイントはf.search_field :name_cont。これでnameに対してLIKE句を利用した部分一致検索ができる.
+
+
+例）
+
+<%= search_form_for @search do |f| %>
+  # nameカラムに対して部分一致検索ができる
+  <%= f.label :name_cont, "商品名を含む" %>
+  <%= f.search_field :name_cont %>
+
+  # 検索ボタン
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+
+
+＊　_eqで　＝　の意味
+
+
+
+例）
+
+<div class="search-btn radio-inline">
+	<%= f.radio_button :occupation_eq,true %>
+	<%= f.label :"Search students" %>
+</div>

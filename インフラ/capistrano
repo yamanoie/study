@@ -1,0 +1,53 @@
+capistrano
+
+
+デプロイ自動化ツール
+
+#導入
+
+１、gemのインストール
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'
+
+
+
+
+２、　$bundle exec cap install
+次のファイルが作成される
+
+
+railsルート
+├─  Capfile
+├─  config
+│ ├─  deploy
+│ │ ├─production.rb
+│ │ └─staging.rb
+│ └─deploy.rb
+└─  lib
+    └─capistrano
+        └─tasks
+
+
+
+3,ファイルの設定
+
+● Capfile  - Capistranoの設定  
+
+● config/deploy.rb  - デプロイの共通の設定
+
+● config/deploy/production.rb  - リモート環境に対する設定
+  
+ 
+以上の3つのファイルに設定の編集を加えていく。  
+
+
+
+ Capistranoを使ってデプロイをするとアプリケーションの直下に「current」と「release」というフォルダが作成され、それぞれにアプリケーションが作成される。   「release」ではデフォルトで5件のバージョンのアプリが格納され、ソースコードに変更があってデプロイして間違いがあった場合に、一つ前のバージョンに戻すことなどが可能て。  
+「current」では「release」の最新をシンボリックリンクとして配置。
+  
+※シンボリックリンク = 本来の位置にファイルやフォルダを残し、それとは別の場所に置いたり別名を付けてアクセスする手段である  。 ショートカットのようなもの。今回は「release」の中の最新バージョンのアプリを実体として、「current」の中にそこへのショートカットを作成しているイメージて。
+
+
+

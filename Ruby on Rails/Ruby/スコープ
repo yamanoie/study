@@ -1,0 +1,100 @@
+スコープ
+
+変数の有効範囲の事。
+スコープの外からは変数は見えないため、変数を参照できなくなっている。
+
+
+＃スコープと変数
+
+
+・グローバル変数
+
+スコープはプロジェクトの全ての範囲。
+そのため、プロジェクト内で一意であることが保証されている変数のみに使用される。
+
+思わぬ部分で変数名がかぶってしまいバグやエラーの原因ともなるので、使う場面はよく考える。
+
+
+$global = "global"
+
+def greet
+  p $global
+end
+
+greet => “global”
+
+
+
+
+・インスタンス変数
+
+インスタンス毎に値を持つ変数。
+スコープはインスタンス内ならどこでも参照することができる。
+
+
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def put_name
+    p @name
+  end
+end
+
+user1 = User.new("taroo")
+user2 = User.new("hanako")
+user1.put_name　　=> “taroo”
+user2.put_name => “hanako”
+
+
+
+
+
+・クラス変数
+
+クラス変数はクラス内で一意に値を持つ変数。
+スコープはクラス内。
+
+class User
+  def initialize(name)
+    @@name = name
+  end
+
+  def put_name
+    p @@name
+  end
+end
+
+user1 = User.new("taroo")
+user2 = User.new("hanako")
+user1.put_name => “hanako”
+user2.put_name => ”hanako”
+
+
+
+
+・ローカル変数
+
+ローカル変数は一番スコープが狭い変数。
+変数は定義されたメソッドのみ。
+
+class User
+  def initialize(name)
+    local_name = name
+  end
+
+  def put_name
+    p local_name
+  end
+end
+
+user1 = User.new("taroo")
+user2 = User.new("hanako")
+user1.put_name
+user2.put_name
+
+`put_name’: undefined local variable or method `local_name’ for #<User:0x007fcfbb1735a8> (NameError)
+
+エラーになる。
