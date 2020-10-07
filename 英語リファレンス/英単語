@@ -17,3 +17,5 @@ prod = production 本番
 staging =　検証
 
 implement = 実行する
+
+outage = 停電

@@ -36,3 +36,19 @@ def search_params
   # params.except(:action, :controller)
   params.permit(:user_id, :name)
 end
+
+
+
+
+3# default_scope is evil
+
+
+class Post
+  default_scope where(published: true).order("created_at desc")
+end
+
+don't use degault_scope
+
+
+＊default_scope
+すべてのクエリに追加で絞り込みやorderを指定する
