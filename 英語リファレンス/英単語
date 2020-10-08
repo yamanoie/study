@@ -19,3 +19,5 @@ staging =　検証
 implement = 実行する
 
 outage = 停電
+
+return value = 戻り値

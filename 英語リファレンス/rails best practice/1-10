@@ -40,7 +40,7 @@ end
 
 
 
-3# default_scope is evil
+#3 default_scope is evil
 
 
 class Post
@@ -52,3 +52,51 @@ don't use degault_scope
 
 ＊default_scope
 すべてのクエリに追加で絞り込みやorderを指定する
+
+
+#4 monitor your backend services
+
+
+
+#5 Pay more attentions on security
+
+brakemanmを使ってセキュリティ対策をしよう。
+
+
+
+#6 speed up assets precompile with turbo-sprockets-rails3
+
+rails3.1のcapfileを加えると、imageなどが早く表示されるようになる。
+load 'deploy/assets'
+ただ、キャピストラーノ使用時に時間がかかるようになる。
+
+turbo-sprockets-rails3　gem
+でdeployの時間を短縮できる
+
+
+#7 Check the return value of "save", otherwise use "save!"
+
+!を使わないと、あとでカラムを追加したときにエラーになる。(エラーアラートが出ない)
+！でエラーアラートが出る。
+
+
+
+post = Posts.new do |p|
+  p.title = "example"
+  p.body = "An example"
+end
+post.save
+
+
+<Refactor>
+
+
+post = Posts.new do |p|
+  p.title = "example"
+  p.body = "An example"
+end
+post.save!
+
+
+
+＊ return value = 戻り値
