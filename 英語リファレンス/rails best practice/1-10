@@ -100,3 +100,24 @@ post.save!
 
 
 ＊ return value = 戻り値
+
+
+
+#8 Don't rescue Exception, rescue StandardError
+
+
+Exceptionを省略する
+
+begin
+  foo
+rescue Exception => e
+  logger.warn "Unable to foo, will ignore: #{e}"
+end
+
+<Refactor>
+
+begin
+  foo
+rescue => e
+  logger.warn "Unable to foo, will ignore: #{e}"
+end
