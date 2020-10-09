@@ -1,0 +1,87 @@
+例外処理
+
+エラーがでたときの処理を行うこと
+
+
+#begin rescue
+
+
+例）
+
+puts 10 / 0
+puts "こんにちは"
+
+すると
+
+divided by 0 (ZeroDivisionError)
+
+が発生する
+
+
+↓例外処理
+
+
+begin
+  10 / 0
+rescue
+  p "0で割れません"
+end
+puts "こんにちは"
+
+
+
+"0で割れません"
+"こんにちは"
+
+
+
+1.エラーの対象となりそうな箇所をbeginで囲う。
+2.エラーが発生した場合の処理をrescueの中に書く。
+
+
+
+
+
+# resuece => e
+
+rescueの後に引数を指定してあげることで、変数の中にエラー内容を格納することができる。
+
+
+begin
+  10 / 0
+rescue => e
+  puts e
+end
+
+divided by 0
+
+
+
+
+
+
+
+# エラーごとの処理
+
+どのエラーが出た時にどの処理をするか,というのを条件分岐させることができる。
+
+
+begin
+  10 / 0
+rescue NoMethodError
+  puts "そのようなメソッドはありません"
+rescue ZeroDivisionError
+  puts "0で割れません"
+end
+
+
+0で割れません
+
+
+
+1.NoMethodErrorじゃない。次のrescueへ。
+2.ZeroDivisionErrorだ。どんな例外処理が書いてあるんだろう。(0で割れませんを出力)
+
+
+
+
