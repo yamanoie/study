@@ -85,3 +85,75 @@ end
 
 
 
+# raise
+
+明示的にエラーを発生させ、処理を中断させたいときに使う。
+
+
+begin
+  raise NoMethodError
+rescue => e
+  p e
+end
+
+結果
+NoMethodError
+
+
+
+独自のエラーを作ることも可能で、そのときはStandardErrorを継承させる。
+
+
+class Hoge < StandardError #例外クラスを継承
+end
+
+begin
+  raise Hoge
+rescue => e
+  p e
+end
+
+結果
+#<Hoge: Hoge>
+
+
+# retry
+
+エラーが起きても、再度beginに戻って実行することができる。
+
+
+
+num = 0
+begin
+  puts 10 / num
+rescue ZeroDivisionError => e
+  puts e
+  num = 1
+  retry #beginブロックを再度実行
+end
+
+puts "終了しました"
+
+
+結果
+divided by 0
+10
+終了しました
+
+
+
+# ensure
+
+例外が発生してもしなくても実行される処理を書くことができる。
+
+
+begin
+  puts "例外なし"
+rescue => e
+  puts e
+ensure
+  puts "ensureは絶対実行する!"
+end
+
+例外なし
+ensureは絶対実行する!

@@ -121,3 +121,44 @@ begin
 rescue => e
   logger.warn "Unable to foo, will ignore: #{e}"
 end
+
+
+
+#9 Tell, don't ask
+
+ユーザーに誕生日を尋ねているが、尋ねるのではなく、ユーザーが提供している誕生日を
+取り扱う。
+
+
+def birth_year(user)
+  if user.birthday
+    user.birthday.year
+  else
+    'No birthday year on file'
+  end
+end
+
+<Refactor>
+
+def birth_year(user)
+  user.birthday.year
+end
+
+class User
+  def birthday
+    @birthday || NullBirthday.new
+  end
+end
+
+class NullBirthday
+  def year
+    'No birthday year on file'
+  end
+end
+
+
+
+
+#10 split your cap tasks into different files
+
+大きなプロジェクトになるとキャピストラーノの管理が難しくなるので別のファイルに分ける。
