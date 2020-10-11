@@ -1,0 +1,7 @@
+11-20
+
+#11 rolling out with feature flags
+
+feature flag(toggle)
+
+個別の機能を On/Off するためのフラグの管理機構
