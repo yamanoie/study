@@ -1,0 +1,30 @@
+SELECT
+
+＃SELECT
+
+retrieve data データを取得する
+
+スペースの後にカラムのリストを記述
+
+例）
+SELECT select_list
+
+
+
+
+＃FROM
+
+テーブル名を取得
+
+例）
+FROM table_name;
+
+you have semicolon ; at the end of the statement.
+
+semicolon is delimiter = 区切り文字
+
+
+
+
+SQL is not a case-sensitive language = 大文字と小文字で区別しない
+小文字(lowercase)で書いても動くが初期設定(formatting)は大文字
