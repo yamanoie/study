@@ -23,3 +23,15 @@ outage = 停電
 return value = 戻り値
 
 relational databass = RDB (MySQLなど)
+
+syntax = 構文　文法
+
+statement = 記述
+
+capital letter = 大文字
+
+formtting = 初期設定
+
+case-sensitive　= 大文字と小文字で区別する
+
+lowercase = 小文字
