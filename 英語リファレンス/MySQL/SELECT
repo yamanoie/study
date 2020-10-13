@@ -19,8 +19,9 @@ SELECT select_list
 例）
 FROM table_name;
 
-you have semicolon ; at the end of the statement.
 
+
+you have semicolon ; at the end of the statement.
 semicolon is delimiter = 区切り文字
 
 
@@ -28,3 +29,45 @@ semicolon is delimiter = 区切り文字
 
 SQL is not a case-sensitive language = 大文字と小文字で区別しない
 小文字(lowercase)で書いても動くが初期設定(formatting)は大文字
+FROM keyword is on a new line. 重要
+
+MySQL evaluates the FROM clause first and then the SELECT clause:
+FROMから先に評価する　FROM → SELECT
+
+
+
+
+
+ex)
+
+SELECT lastName #one of the columns
+FROM employees; #name of table
+
+
+
+in the case of multiple columns
+
+
+ex)
+
+SELECT
+    lastname,
+    firstname,
+    jobtitle
+FROM
+    employees;
+
+
+
+
+in the case of all columns
+
+
+
+SELECT *
+FROM employees;
+
+
+
+
+SELECT*  offten collerd "select star"
