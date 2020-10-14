@@ -1,0 +1,42 @@
+ORDER BY
+
+To sort the result set
+
+
+SELECT
+   select_list
+FROM
+   table_name
+ORDER BY
+   column1 [ASC|DESC],
+   column2 [ASC|DESC],
+   ...;
+
+
+
+
+   ASC = achending 昇順
+   DESC = descending 降順
+
+
+
+
+   By default, the ORDER BY clause ues ASC
+   デフォルでは昇順
+   だから、ASCはつけてもつけなくてもいい
+
+
+
+IF you want to sort the result set by multiple columns
+
+
+
+   ORDER BY
+   column1,
+   column2;
+
+
+
+
+
+FROM SELECT ORDERBY の順で実行される
