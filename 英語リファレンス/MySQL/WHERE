@@ -1,0 +1,32 @@
+WHERE
+
+The WHERE clause allows you to specify a search condition for the rowsreturned by a query.
+
+
+SELECT
+    select_list
+FROM
+    table_name
+WHERE
+    search_condition;
+
+
+FROM SELECT WHERE ORDERBY
+
+
+
+
+# Using WHERE clause
+
+SELECT 
+    lastname, 
+    firstname, 
+    jobtitle
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep';
+
+
+
+It finds all employees whose job titles are Sales Rep:
