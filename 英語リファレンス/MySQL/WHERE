@@ -30,3 +30,50 @@ WHERE
 
 
 It finds all employees whose job titles are Sales Rep:
+
+
+
+
+＃WHERE clause with AND operator
+
+SELECT 
+    lastname, 
+    firstname, 
+    jobtitle,
+    officeCode
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep' AND 
+    officeCode = 1;
+
+
+
+the WHERE clause to find employees whose job titles are Sales Rep and office codes are 1:
+
+
+combine two conditions
+
+The AND operator evaluates to TRUE only if both expressions evaluate to TRUE.
+
+
+
+
+＃WHERE clause with OR operator
+
+
+SELECT 
+    lastName, 
+    firstName, 
+    jobTitle, 
+    officeCode
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep' OR 
+    officeCode = 1
+ORDER BY 
+    officeCode , 
+    jobTitle;
+
+This query finds employees whose job title is Sales Rep or employees who locate the office with office code 1:
