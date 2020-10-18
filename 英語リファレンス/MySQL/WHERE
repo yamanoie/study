@@ -77,3 +77,52 @@ ORDER BY
     jobTitle;
 
 This query finds employees whose job title is Sales Rep or employees who locate the office with office code 1:
+
+
+
+
+＃WHERE with BETWEEN operator
+
+
+The BETWEEN operator returns TRUE if a value is in a range of values
+
+
+
+SELECT 
+    firstName, 
+    lastName, 
+    officeCode
+FROM
+    employees
+WHERE
+    officeCode BETWEEN 1 AND 3
+ORDER BY officeCode;
+
+
+
+It finds employees who locate in offices whose office code is from 1 to 3
+
+
+
+
+
+
+#WHERE with the LIKE operator
+
+
+The LIKE operator evaluates to TRUE if a value matches a specified pattern
+
+
+
+SELECT 
+    firstName, 
+    lastName
+FROM
+    employees
+WHERE
+    lastName LIKE '%son'
+ORDER BY firstName;
+
+
+
+It finds employees whose last names end with the string 'son'
