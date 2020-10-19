@@ -126,3 +126,54 @@ ORDER BY firstName;
 
 
 It finds employees whose last names end with the string 'son'
+
+
+
+
+
+
+＃WHERE clause with the IN operator 
+
+
+
+SELECT 
+    firstName, 
+    lastName, 
+    officeCode
+FROM
+    employees
+WHERE
+    officeCode IN (1 , 2, 3)
+ORDER BY 
+    officeCode;
+
+
+
+
+It finds employees who locate in the office with office code 1.
+
+
+
+
+
+#WHERE  clause with the IS NULL operator
+
+To check if a value is NULL or not, you use the IS NULL operator, not the equal operator (=). The IS NULL operator returns TRUE if a value is NULL.
+
+
+
+
+
+SELECT 
+    lastName, 
+    firstName, 
+    reportsTo
+FROM
+    employees
+WHERE
+    reportsTo IS NULL;
+
+
+
+
+It gets the row whose value in the reportsTo column is NULL
