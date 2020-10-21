@@ -1,0 +1,33 @@
+DISTINCT
+
+You may get duplicate rows.
+In order to remove these duplicate rows, you use the DISTINCT clause in the SELECT statement.
+
+
+
+
+
+EX)
+
+First, query the last names of employees from the employees table using the following SELECT statement.
+
+SELECT 
+    lastname
+FROM
+    employees
+ORDER BY 
+    lastname;
+
+
+
+ここでlastnameがダブることがある。
+その時にDISTINCTを使う
+
+
+
+SELECT 
+    DISTINCT lastname
+FROM
+    employees
+ORDER BY 
+    lastname;
