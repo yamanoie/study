@@ -1,0 +1,38 @@
+AND
+
+It combines multiple Boolean expressions to filter data.
+
+The AND operator is a logical operator that combines two or more Boolean expressions and returns true only if both expressions evaluate to true. The AND operator returns false if one of the two expressions evaluate to false.
+
+
+
+EX)
+
+SELECT 
+    customername, 
+    country, 
+    state
+FROM
+    customers
+WHERE
+    country = 'USA' AND state = 'CA';
+
+
+
+
+By using the AND operator, you can combine more than two Boolean expressions.
+
+
+
+
+
+SELECT    
+	customername, 
+	country, 
+	state, 
+	creditlimit
+FROM    
+	customers
+WHERE country = 'USA'
+	AND state = 'CA'
+	AND creditlimit > 100000;
