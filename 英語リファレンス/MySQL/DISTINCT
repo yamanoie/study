@@ -69,3 +69,28 @@ ORDER BY
 
 
 stateとcityの組み合わせが同じものがあれば除外する。
+
+
+
+
+
+
+
+＃LIMIT clause
+
+
+
+In case you use the DISTINCT clause with the LIMIT clause, MySQL immediately stops searching when it finds the number of unique rows specified in the LIMIT clause.
+
+
+
+
+SELECT DISTINCT
+    state
+FROM
+    customers
+WHERE
+    state IS NOT NULL
+LIMIT 5;
+
+
