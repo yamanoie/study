@@ -1,0 +1,59 @@
+OR
+
+OR operator combines two Boolean expressions and returns true when either condition is true.
+
+
+
+＃Operator precedence（優先）
+
+When you use more than one logical operator in an expression, MySQL always evaluates the OR operators after the AND operators. This is called operator precedence which determines the order of evaluation of the operators. MySQL evaluates the operator with higher precedence first.
+
+
+
+
+
+SELECT    
+	customername, 
+	country
+FROM    
+	customers
+WHERE country = 'USA' OR 
+      country = 'France';
+
+
+
+the query returns customers who locate in the USA or France.
+
+
+
+
+SELECT   
+	customername, 
+	country, 
+	creditLimit
+FROM   
+	customers
+WHERE(country = 'USA'
+		OR country = 'France')
+	  AND creditlimit > 100000;
+
+
+It returns the customers who locate in the USA or France and have a credit limit greater than 100,000.
+
+
+
+SELECT    
+	customername, 
+	country, 
+	creditLimit
+FROM    
+	customers
+WHERE country = 'USA'
+		OR country = 'France'
+		AND creditlimit > 10000;
+
+
+Notice that if you do not use the parentheses（丸括弧）, the query will return the customers who locate in the USA or the customers who locate in France with the credit limit greater than 10,000.
+
+
+カッコがないと、USA または　France ＋　creditlimit > 10000という結果になる
