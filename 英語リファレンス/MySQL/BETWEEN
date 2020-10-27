@@ -1,0 +1,33 @@
+BETWEEN
+
+The BETWEEN operator is a logical operator that allows you to specify whether a value in a range or not.
+
+
+SELECT 
+    productCode, 
+    productName, 
+    buyPrice
+FROM
+    products
+WHERE
+    buyPrice BETWEEN 90 AND 100;
+
+
+
+
+The BETWEEN operator finds products whose buy prices between  90 and 100
+
+
+
+
+
+This query uses the greater than or equal (>=) a
+
+SELECT 
+    productCode, 
+    productName, 
+    buyPrice
+FROM
+    products
+WHERE
+    buyPrice >= 90 AND buyPrice <= 100;
