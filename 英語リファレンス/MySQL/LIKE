@@ -1,0 +1,60 @@
+LIKE
+
+The LIKE operator is a logical operator that tests whether a string contains a specified pattern or not.
+
+MySQL provides two wildcard characters for constructing patterns: percentage % and underscore _
+
+
+The percentage ( % ) wildcard matches any string of zero or more characters.
+The underscore ( _ ) wildcard matches any single character.
+
+For example, s% matches any string starts with the character s such as sun and six.
+The se_ matches any string starts with  se and is followed by any character such as see and sea.
+
+
+
+#LIKE with the percentage (%) wildcard
+
+
+SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    firstName LIKE 'a%';
+
+
+ It finds employees whose first names start with a
+
+
+
+
+ SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    lastName LIKE '%on';
+
+
+It finds employees whose last names end with on
+
+
+SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    lastname LIKE '%on%';
+
+
+
+
+
+It finds all employees whose last names contain on
