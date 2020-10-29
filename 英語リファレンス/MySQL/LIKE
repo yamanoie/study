@@ -58,3 +58,41 @@ WHERE
 
 
 It finds all employees whose last names contain on
+
+
+
+＃LIKE with underscore( _ ) wildcard 
+
+
+SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    firstname LIKE 'T_m';
+
+
+
+It find employees whose first names start with  T , end with m, and contain any single character between e.g., Tom , Tim, you use the underscore (_) wildcard to construct the pattern
+
+
+
+
+
+#LIKE operator with the NOT operator
+
+
+The MySQL allows you to combine the NOT operator with the LIKE operator to find a string that does not match a specific pattern.
+
+
+
+SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    lastName NOT LIKE 'B%';
