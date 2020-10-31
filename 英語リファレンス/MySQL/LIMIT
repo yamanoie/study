@@ -1,0 +1,45 @@
+LIMIT
+
+The LIMIT clause is used in the SELECT statement to constrain（規制する） the number of rows to return.
+
+FROM WHERE SELECT ORDERBY LIMIT
+
+
+#LIMIT to get the highest or lowest rows
+
+SELECT 
+    customerNumber, 
+    customerName, 
+    creditLimit
+FROM
+    customers
+ORDER BY creditLimit DESC
+LIMIT 5;
+
+
+
+This statement uses the LIMIT clause to get the top five customers who have the highest credit
+
+First, the ORDER BY clause sorts the customers by credits in high to low.
+Then, the LIMIT clause returns the first 5 rows.
+
+--------------
+
+
+This example uses the LIMIT clause to find 5 customers who have the lowest credits
+
+
+
+
+SELECT 
+    customerNumber, 
+    customerName, 
+    creditLimit
+FROM
+    customers
+ORDER BY creditLimit
+LIMIT 5;
+
+
+First, the ORDER BY clause sorts the customers by credits in low to high.
+Then, the LIMIT clause returns the first 5 rows.
