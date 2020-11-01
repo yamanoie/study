@@ -43,3 +43,51 @@ LIMIT 5;
 
 First, the ORDER BY clause sorts the customers by credits in low to high.
 Then, the LIMIT clause returns the first 5 rows.
+
+
+
+
+
+#LIMIT to get the nth highest or lowest value
+
+
+
+SELECT select_list
+FROM table_name
+ORDER BY sort_expression
+LIMIT n-1, 1;
+
+The clause LIMIT n-1, 1 returns 1 row starting at the row n
+
+
+
+
+It finds the customer who has the second-highest credit
+
+
+SELECT 
+    customerName, 
+    creditLimit
+FROM
+    customers
+ORDER BY 
+    creditLimit DESC    
+LIMIT 1,1;
+
+
+creditLimitが上から２番目のデータを取り出す
+
+
+
+SELECT 
+    customerName, 
+    creditLimit
+FROM
+    customers
+ORDER BY 
+    creditLimit DESC    
+LIMIT 4,3;
+
+creditLimitが上から4,5,6番目のデータを取り出す
+
+
