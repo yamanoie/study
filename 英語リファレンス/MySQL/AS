@@ -1,0 +1,27 @@
+AS
+
+MySQL alias to improve the readability of the queries
+
+
+
+SELECT
+   CONCAT_WS(', ', lastName, firstname) AS `Full name`
+FROM
+   employees;
+
+
+
+The column heading is quite difficult to read. To solve this, you can assign the column heading of the output a column alias as shown in the following query
+The following query selects the first names and last names of employees. It uses the CONCAT_WS() function to concatenate first name and last name into full name
+
+
+
+SELECT
+	CONCAT_WS(', ', lastName, firstname) `Full name`
+FROM
+	employees
+ORDER BY
+	`Full name`;
+
+
+	The following query uses the column alias in the ORDER BY clause to sort the employee’s full names alphabetically:
